@@ -10,3 +10,9 @@ C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.csp
 C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.dll
 C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.pdb
+D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\bin\Debug\dominio.dll
+D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\bin\Debug\dominio.pdb
+D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\obj\Debug\dominio.dll
+D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\obj\Debug\dominio.pdb
