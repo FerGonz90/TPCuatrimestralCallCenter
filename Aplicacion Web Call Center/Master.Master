@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="Aplicacion_Web_Call_Center.Master" %>
+﻿    <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="Aplicacion_Web_Call_Center.Master" %>
 
 <!DOCTYPE html>
 

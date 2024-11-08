@@ -9,9 +9,9 @@
      
     <Columns>
         <asp:BoundField DataField="Id" HeaderText="ID Incidencia" ReadOnly="true" />
-        <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
-        <asp:BoundField DataField="TipoIncidencia" HeaderText="Tipo de Incidencia" />
-        <asp:BoundField DataField="PrioridadIncidencia" HeaderText="Prioridad" />
+        <asp:BoundField DataField="IdCliente" HeaderText="Cliente" />
+        <asp:BoundField DataField="IdTipoIncidencia" HeaderText="Tipo de Incidencia" />
+        <asp:BoundField DataField="IdPrioridad" HeaderText="Prioridad" />
         <asp:BoundField DataField="Estado" HeaderText="Estado" />
         <asp:CommandField ShowSelectButton="true" SelectText="Modificar" HeaderText="Acción" />
 

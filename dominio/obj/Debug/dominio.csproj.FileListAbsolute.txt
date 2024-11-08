@@ -4,3 +4,9 @@ C:\Users\user\Desktop\Programación III\TrabajoPracticoCuatrimestral\dominio\bin
 C:\Users\user\Desktop\Programación III\TrabajoPracticoCuatrimestral\dominio\bin\Debug\dominio.pdb
 C:\Users\user\Desktop\Programación III\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.dll
 C:\Users\user\Desktop\Programación III\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.pdb
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\bin\Debug\dominio.dll
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\bin\Debug\dominio.pdb
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.dll
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\dominio\obj\Debug\dominio.pdb
