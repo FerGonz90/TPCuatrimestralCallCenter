@@ -16,3 +16,9 @@ D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter
 D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\obj\Debug\dominio.dll
 D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\dominio\obj\Debug\dominio.pdb
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\dominio\bin\Debug\dominio.dll
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\dominio\bin\Debug\dominio.pdb
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\dominio\obj\Debug\dominio.dll
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\dominio\obj\Debug\dominio.pdb

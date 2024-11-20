@@ -11,35 +11,32 @@ namespace Aplicacion_Web_Call_Center
 {
     public partial class AdmClientes : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            string cod = Request.QueryString["cod"];
+
             if (!IsPostBack)
             {
-                cargarClientes();
+                if (cod == "b")
+                    ((CommandField)dgvClientes.Columns[5]).SelectText = "Seleccionar";
+
+                ClienteNegocio negocio = new ClienteNegocio();
+                dgvClientes.DataSource = negocio.listar();
+                dgvClientes.DataBind();
+
             }
         }
 
-        private void cargarClientes()
-        {
-            
-            /*var listaClientes = new List<Cliente>();
-
-            listaClientes.Add(new Cliente { Id = 1, Nombre = "Juan Pérez", Email = "juan.perez@example.com", Telefono = "123456789", Direccion = "Calle Falsa 123" });
-            listaClientes.Add(new Cliente { Id = 2, Nombre = "María Gómez", Email = "maria.gomez@example.com", Telefono = "987654321", Direccion = "Avenida Siempre Viva 456" });
-            listaClientes.Add(new Cliente { Id = 3, Nombre = "Carlos Ruiz", Email = "carlos.ruiz@example.com", Telefono = "555555555", Direccion = "Boulevard de los Sueños Rotos 789" });
-            */
-
-            ClienteNegocio negocio = new ClienteNegocio();
-            dgvClientes.DataSource = negocio.listar();
-            dgvClientes.DataBind();
-        }
-
-
         protected void dgvClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = dgvClientes.SelectedDataKey.Value.ToString();
-            id = "2";
-            Response.Redirect("GestionClientes.aspx?id=" + id);
+            int idCliente = Convert.ToInt32(dgvClientes.SelectedDataKey.Value);
+            string cod = Request.QueryString["cod"];
+
+            if (cod == "b")
+                Response.Redirect("GestionIncidencias.aspx?id=" + idCliente);
+            else
+            Response.Redirect("GestionClientes.aspx?id=" + idCliente);
         }
     }
 }

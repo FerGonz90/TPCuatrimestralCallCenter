@@ -246,3 +246,7 @@ D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter
 D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\Aplicacion Web Call Center\bin\Negocio.dll
 D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\Aplicacion Web Call Center\bin\AccesoDatos.pdb
 D:\000 UNIVERSIDAD\2024 - 2°C\Programacion III\0- TPC\TPCuatrimestralCallCenter-main\Aplicacion Web Call Center\bin\Negocio.pdb
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\Aplicacion Web Call Center\bin\AccesoDatos.dll
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\Aplicacion Web Call Center\bin\Negocio.dll
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\Aplicacion Web Call Center\bin\AccesoDatos.pdb
+C:\Users\user\Desktop\TrabajoPracticoCuatrimestral\TPCuatrimestralCallCenter\Aplicacion Web Call Center\bin\Negocio.pdb

@@ -6,11 +6,11 @@
     <h2>Inicio de Sesión</h2>
     <p>Por favor, ingrese sus credenciales para acceder al sistema.</p>
 
-    <div class="form-group">
+    <div class="form-group col-4">
         <label for="txtUsername">Usuario</label>
         <asp:TextBox ID="txtUsername" CssClass="form-control" runat="server" />
     </div>
-    <div class="form-group">
+    <div class="form-group col-4">
         <label for="txtPassword">Contraseña</label>
         <asp:TextBox ID="txtPassword" CssClass="form-control margen-inf" TextMode="Password" runat="server" />
     </div>
