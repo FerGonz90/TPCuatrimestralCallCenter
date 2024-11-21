@@ -26,9 +26,9 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     Cliente aux = new Cliente();
-                    aux.Id = datos.Lector.GetInt32(0);
+                    aux.ClienteID = datos.Lector.GetInt32(0);
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Email = (string)datos.Lector["Correo"];
+                    aux.Correo = (string)datos.Lector["Correo"];
                     aux.Telefono = (string)datos.Lector["Telefono"];
 
                     lista.Add(aux);
@@ -47,5 +47,44 @@ namespace Negocio
             }
 
         }
+
+        public Cliente filtrarPorId(int id)
+        {
+            Cliente clien = new Cliente();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "Select ClienteID, Nombre, Correo, Telefono From Clientes " +
+                    "WHERE ClienteID = " + id;
+                
+
+                datos.setConsulta(consulta);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    clien.ClienteID = (int)datos.Lector["ClienteID"];
+                    clien.Nombre = (string)datos.Lector["Nombre"];
+                    clien.Correo = (string)datos.Lector["Correo"];
+                    clien.Telefono = (string)datos.Lector["Telefono"];
+                }
+                else
+                {
+                    return null;
+                }
+                
+                return clien;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        } 
     }
 }
