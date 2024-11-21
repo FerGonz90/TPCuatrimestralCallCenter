@@ -1,4 +1,5 @@
 ﻿using dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,9 @@ namespace Aplicacion_Web_Call_Center
 
         protected void cargarIncidencias()
         {
-            var listaIncidencias = new List<Incidencia>();
+            IncidenciaNegocio negocio = new IncidenciaNegocio();
 
-            listaIncidencias.Add(new Incidencia { Id = 1, IdCliente = 1, IdTipoIncidencia = 1, IdPrioridad = 1, Estado = "Abierto" });
-            listaIncidencias.Add(new Incidencia { Id = 2, IdCliente = 2, IdTipoIncidencia = 2, IdPrioridad = 2, Estado = "En Análisis" });
-            listaIncidencias.Add(new Incidencia { Id = 3, IdCliente = 3, IdTipoIncidencia = 3, IdPrioridad = 2, Estado = "Resuelto" });
-
-            dgvIncidencias.DataSource = listaIncidencias;
+            dgvIncidencias.DataSource = negocio.listarInciConSP();
             dgvIncidencias.DataBind();
         }
 
@@ -35,6 +32,12 @@ namespace Aplicacion_Web_Call_Center
             var id = dgvIncidencias.SelectedDataKey.Value.ToString();
             id = "3";
             Response.Redirect("GestionIncidencias.aspx?id=" + id);
+        }
+
+        protected void dgvIncidencias_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvIncidencias.PageIndex = e.NewPageIndex;
+            cargarIncidencias(); 
         }
     }
 }

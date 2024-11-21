@@ -22,6 +22,12 @@ namespace Aplicacion_Web_Call_Center
                     PrioridadNegocio negocioPrioridades = new PrioridadNegocio();
                     List<PrioridadIncidencia> listaPrioridades = negocioPrioridades.listar();
 
+                    if (Request.QueryString["id"] != null)
+                    {
+                        string id = Request.QueryString["id"];
+                        txtClientes.Text = id;
+                    }
+
                     ddlTipoIncidencia.DataSource = lista;
                     ddlTipoIncidencia.DataValueField = "Id";
                     ddlTipoIncidencia.DataTextField = "Descripcion";
@@ -45,7 +51,26 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnCrearIncidencia_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Incidencia nueva = new Incidencia();
+                IncidenciaNegocio negocio = new IncidenciaNegocio();
 
+                nueva.Cliente.ClienteID = int.Parse(txtClientes.Text);
+                nueva.Tipo.Id = int.Parse(ddlTipoIncidencia.SelectedValue);
+                nueva.Prioridad.Id = int.Parse(ddlPrioridad.SelectedValue);
+                nueva.Problematica = txtDescripcion.Text;
+                nueva.FechaCreacion = DateTime.Now;
+
+                negocio.insertar(nueva);
+
+                Response.Redirect("Home.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         protected void btnBuscarCliente_Click(object sender, EventArgs e)

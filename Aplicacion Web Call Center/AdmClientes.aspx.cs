@@ -67,7 +67,7 @@ namespace Aplicacion_Web_Call_Center
 
                     if (cliente != null)
                     { 
-                        List<Cliente> listaUnoSolo = new List<Cliente> { cliente};
+                        List <Cliente> listaUnoSolo = new List<Cliente> { cliente};
                         dgvClientes.DataSource = listaUnoSolo;
                         dgvClientes.DataBind();
                         lblError.Visible = false;
@@ -95,6 +95,9 @@ namespace Aplicacion_Web_Call_Center
         protected void dgvClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvClientes.PageIndex = e.NewPageIndex;
+            ClienteNegocio negocio = new ClienteNegocio();
+            dgvClientes.DataSource = negocio.listar();
+            
             dgvClientes.DataBind();
         }
     }
