@@ -70,6 +70,7 @@
     <Content Include="AdmClientes.aspx" />
     <Content Include="Contenido\estilos.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="GestionClientes.aspx" />
     <Content Include="GestionIncidencias.aspx" />
     <Content Include="GestionUsuarios.aspx" />
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionClientes.aspx.cs">
       <DependentUpon>GestionClientes.aspx</DependentUpon>

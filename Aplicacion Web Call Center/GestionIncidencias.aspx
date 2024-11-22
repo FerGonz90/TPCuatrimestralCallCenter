@@ -52,6 +52,9 @@
                 <asp:Button ID="btnCrearIncidencia" Text="Crear Incidencia" runat="server" OnClick="btnCrearIncidencia_Click" CssClass="btn btn-success" />
                 <a href="Home.aspx">Cancelar</a>
             </div>
+            <div>
+                <asp:Label ID="lblMensajeError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
+            </div>
         </div>
     </div>
 

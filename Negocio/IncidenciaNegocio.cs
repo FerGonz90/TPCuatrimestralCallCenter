@@ -48,18 +48,18 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void insertar(Incidencia nueva)
+        public void insertarConSp(Incidencia nueva)
         {
             AccesoDatos datos = new AccesoDatos();
                 
             try
             {
-                datos.setSP("storedInsertar");
-                datos.agregarParametro("@Clien", nueva.Tipo.Id);
-                datos.agregarParametro("@Tipo", nueva.Tipo.Id );
-                datos.agregarParametro("@Priori", nueva.Tipo.Id);
-                datos.agregarParametro("@Proble", nueva.Problematica);
-                datos.agregarParametro("@Fecha", nueva.FechaCreacion);
+                datos.setSP("storedInsertarIncidencia");
+                datos.agregarParametro("@ClienteID", nueva.Cliente.ClienteID);
+                datos.agregarParametro("@TipoID", nueva.Tipo.Id );
+                datos.agregarParametro("@PrioridadID", nueva.Prioridad.Id);
+                datos.agregarParametro("@Problematica", nueva.Problematica);
+                datos.agregarParametro("@FechaCreacion", nueva.FechaCreacion);
 
                 datos.ejecutarAccion();
 

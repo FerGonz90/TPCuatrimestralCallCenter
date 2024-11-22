@@ -42,10 +42,8 @@ namespace Aplicacion_Web_Call_Center
             }
             catch (Exception ex)
             {
-
-                Session.Add("error", ex);
-
-                //redirecciono a pantalla de error
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -53,23 +51,42 @@ namespace Aplicacion_Web_Call_Center
         {
             try
             {
-                Incidencia nueva = new Incidencia();
-                IncidenciaNegocio negocio = new IncidenciaNegocio();
+                int clienteId = int.Parse(txtClientes.Text);
+                ClienteNegocio negocio2 = new ClienteNegocio();
 
-                nueva.Cliente.ClienteID = int.Parse(txtClientes.Text);
-                nueva.Tipo.Id = int.Parse(ddlTipoIncidencia.SelectedValue);
-                nueva.Prioridad.Id = int.Parse(ddlPrioridad.SelectedValue);
-                nueva.Problematica = txtDescripcion.Text;
-                nueva.FechaCreacion = DateTime.Now;
+                Cliente clienteExistente = negocio2.filtrarPorId(clienteId);
+                
+                if (clienteExistente == null)
+                {
+                    lblMensajeError.Text = "El Id de Cliente ingresado no existe.";
+                    lblMensajeError.Visible = true;
+                }
+                else
+                {
+                    lblMensajeError.Visible = false;
+                    Incidencia nueva = new Incidencia();
+                    nueva.Cliente = new Cliente();
+                    nueva.Tipo = new TipoIncidencia();
+                    nueva.Prioridad = new PrioridadIncidencia();
+                    IncidenciaNegocio negocio = new IncidenciaNegocio();
 
-                negocio.insertar(nueva);
+                    nueva.Cliente.ClienteID = int.Parse(txtClientes.Text);
+                    nueva.Tipo.Id = int.Parse(ddlTipoIncidencia.SelectedValue);
+                    nueva.Prioridad.Id = int.Parse(ddlPrioridad.SelectedValue);
+                    nueva.Problematica = txtDescripcion.Text;
+                    nueva.FechaCreacion = DateTime.Now;
 
-                Response.Redirect("Home.aspx", false);
+                    negocio.insertarConSp(nueva);
+
+                    Response.Redirect("Home.aspx", false);
+                }
+
+
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
 

@@ -67,8 +67,8 @@ namespace Aplicacion_Web_Call_Center
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                //Redirigir a pagina de error
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

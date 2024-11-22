@@ -1,0 +1,5 @@
+﻿ALTER TABLE Usuarios
+ADD Contraseña NVARCHAR(255) NOT NULL CONSTRAINT DF_Contraseña DEFAULT 'ok';
+
+ALTER TABLE Usuarios
+DROP CONSTRAINT DF_Contraseña;
