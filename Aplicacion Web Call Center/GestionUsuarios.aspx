@@ -19,5 +19,5 @@
     </asp:DropDownList>
 
     <asp:Button ID="btnAltaUsuario" Text="Dar de Alta Usuario" runat="server" OnClick="btnAltaUsuario_Click" CssClass="btn btn-success" />
-
+    <a href="Home.aspx">Cancelar</a>
 </asp:Content>

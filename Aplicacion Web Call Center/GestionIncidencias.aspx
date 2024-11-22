@@ -50,6 +50,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <asp:Button ID="btnCrearIncidencia" Text="Crear Incidencia" runat="server" OnClick="btnCrearIncidencia_Click" CssClass="btn btn-success" />
+                <a href="Home.aspx">Cancelar</a>
             </div>
         </div>
     </div>

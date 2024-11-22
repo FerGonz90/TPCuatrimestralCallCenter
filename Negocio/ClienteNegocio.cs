@@ -16,7 +16,7 @@ namespace Negocio
         {
             List<Cliente> lista = new List<Cliente>();
             AccesoDatos datos = new AccesoDatos();
-            
+
 
             try
             {
@@ -34,9 +34,9 @@ namespace Negocio
                     lista.Add(aux);
 
                 }
-               return lista;
+                return lista;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
                 throw ex;
@@ -57,7 +57,7 @@ namespace Negocio
             {
                 string consulta = "Select ClienteID, Nombre, Correo, Telefono From Clientes " +
                     "WHERE ClienteID = " + id;
-                
+
 
                 datos.setConsulta(consulta);
                 datos.ejecutarLectura();
@@ -73,7 +73,7 @@ namespace Negocio
                 {
                     return null;
                 }
-                
+
                 return clien;
             }
             catch (Exception ex)
@@ -85,6 +85,51 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        } 
+        }
+
+        public void insertarClienteConSp(Cliente clien)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setSP("storedInsertarCliente");
+                datos.agregarParametro("@Nombre", clien.Nombre);
+                datos.agregarParametro("@Correo", clien.Correo);
+                datos.agregarParametro("@Telefono", clien.Telefono);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+        }
+
+        public void modificarClienteConSp(Cliente clien)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setSP("storedModClien");
+                datos.agregarParametro("@Nombre", clien.Nombre);
+                datos.agregarParametro("@Correo", clien.Correo);
+                datos.agregarParametro("@Telefono", clien.Telefono);
+                datos.agregarParametro("@Id", clien.ClienteID);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+        }
     }
 }
