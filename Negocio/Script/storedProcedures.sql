@@ -45,3 +45,9 @@ create procedure storedInsertarUsuario
 as
 insert into Usuarios (Nombre, Correo, RolID, Contraseña)
 values (@Nombre, @Correo, @RolID, @Contraseña);
+
+create procedure storedlistarUsuarioConSp
+as
+Select u.UsuarioID, u.Nombre, u.Correo, r.RolNombre 
+from Usuarios u, Roles r
+where u.RolID = r.RolID;

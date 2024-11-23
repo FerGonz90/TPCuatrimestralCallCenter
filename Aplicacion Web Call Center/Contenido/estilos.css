@@ -1,3 +1,47 @@
 ﻿.margen-inf {
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
+
+.abm-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.abm-column {
+    width: 45%;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+    .abm-column label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .abm-column select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .abm-column button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .abm-column button:hover {
+            background-color: #0056b3;
+        }

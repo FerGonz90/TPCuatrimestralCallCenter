@@ -30,7 +30,7 @@ namespace Aplicacion_Web_Call_Center
         protected void dgvIncidencias_SelectedIndexChanged(object sender, EventArgs e)
         {
             var id = dgvIncidencias.SelectedDataKey.Value.ToString();
-            Response.Redirect("GestionIncidencias.aspx?id=" + id);
+            Response.Redirect("VerUsuarios.aspx?id=" + id);
         }
 
         protected void dgvIncidencias_PageIndexChanging(object sender, GridViewPageEventArgs e)

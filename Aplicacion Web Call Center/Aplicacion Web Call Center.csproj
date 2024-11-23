@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ABMPrioridadesTipos.aspx" />
     <Content Include="AdmClientes.aspx" />
     <Content Include="Contenido\estilos.css" />
     <Content Include="Default.aspx" />
@@ -81,6 +82,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABMPrioridadesTipos.aspx.cs">
+      <DependentUpon>ABMPrioridadesTipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ABMPrioridadesTipos.aspx.designer.cs">
+      <DependentUpon>ABMPrioridadesTipos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdmClientes.aspx.cs">
       <DependentUpon>AdmClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
