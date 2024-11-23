@@ -19,7 +19,7 @@
             <asp:BoundField DataField="Estado.Descripcion" HeaderText="Estado" />
             <asp:BoundField DataField="FechaCreacion" HeaderText="Fecha de Creación"
                 DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
-            <asp:CommandField ShowSelectButton="true" SelectText="Modificar" HeaderText="Acción" />
+            <asp:CommandField ShowSelectButton="true" SelectText="Asignar" HeaderText="Acción" />
         </Columns>
     </asp:GridView>
 
