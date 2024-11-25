@@ -11,12 +11,16 @@
         <div class="col-4">
             <div class="form-group">
                 <asp:Label ID="lblCliente" Text="Id del Cliente" runat="server" />
-                <asp:TextBox ID = "txtClientes" runat = "server" CssClass = "form-control me-2" TextMode = "Number" Style = "width: 80px;" />
-                <asp:Label ID="lblError" runat="server" CssClass="text-danger ms-2" Visible="false" />
+                <asp:TextBox ID="txtClientes" runat="server" CssClass="form-control me-2" TextMode="Number" Style="width: 80px;" />
+                <asp:RequiredFieldValidator 
+                    ID="rfvClientes" 
+                    ControlToValidate="txtClientes" 
+                    ErrorMessage="El Id del Cliente es obligatorio" 
+                    CssClass="text-danger ms-2" 
+                    runat="server" />
                 <div class="form-group">
-                    <asp:Button ID="btnBuscarCliente" CssClass="btn btn-primary" OnClick="btnBuscarCliente_Click" Text="Buscar cliente" runat="server" />
+                    <asp:Button ID="btnBuscarCliente" CssClass="btn btn-primary" OnClick="btnBuscarCliente_Click" Text="Buscar cliente" runat="server" CausesValidation="false" />
                 </div>
-
             </div>
         </div>
 
@@ -42,6 +46,12 @@
             <div class="form-group">
                 <asp:Label ID="lblDescripcion" Text="Descripción del Reclamo" runat="server" />
                 <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4" />
+                <asp:RequiredFieldValidator 
+                    ID="rfvDescripcion" 
+                    ControlToValidate="txtDescripcion" 
+                    ErrorMessage="La descripción del reclamo es obligatoria" 
+                    CssClass="text-danger ms-2" 
+                    runat="server" />
             </div>
         </div>
     </div>
@@ -57,6 +67,5 @@
             </div>
         </div>
     </div>
-
 
 </asp:Content>

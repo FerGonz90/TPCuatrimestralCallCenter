@@ -33,13 +33,13 @@ namespace Aplicacion_Web_Call_Center
         protected global::System.Web.UI.WebControls.TextBox txtClientes;
 
         /// <summary>
-        /// Control lblError.
+        /// Control rfvClientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvClientes;
 
         /// <summary>
         /// Control btnBuscarCliente.
@@ -103,6 +103,15 @@ namespace Aplicacion_Web_Call_Center
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+
+        /// <summary>
+        /// Control rfvDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
 
         /// <summary>
         /// Control btnCrearIncidencia.
