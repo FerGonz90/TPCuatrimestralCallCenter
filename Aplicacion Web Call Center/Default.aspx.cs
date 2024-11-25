@@ -28,6 +28,12 @@ namespace Aplicacion_Web_Call_Center
         {
             try
             {
+                if(!Validacion.estaCargado(txtUsername) || !Validacion.estaCargado(txtPassword))
+                {
+                    Session.Add("error", "Debe ingresar usuario y contraseña");
+                    Response.Redirect("Error.aspx", false);
+                }
+
                 string username = txtUsername.Text;
                 string password = txtPassword.Text;
                 Usuario usuario = new Usuario();
