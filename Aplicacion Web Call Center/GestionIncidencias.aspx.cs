@@ -65,6 +65,8 @@ namespace Aplicacion_Web_Call_Center
                 {
                     lblMensajeError.Visible = false;
                     Incidencia nueva = new Incidencia();
+                    Usuario creador = new Usuario();
+                    creador = (Usuario)Session["usuario"];
                     nueva.Cliente = new Cliente();
                     nueva.Tipo = new TipoIncidencia();
                     nueva.Prioridad = new PrioridadIncidencia();
@@ -74,6 +76,8 @@ namespace Aplicacion_Web_Call_Center
                     nueva.Tipo.Id = int.Parse(ddlTipoIncidencia.SelectedValue);
                     nueva.Prioridad.Id = int.Parse(ddlPrioridad.SelectedValue);
                     nueva.Problematica = txtDescripcion.Text;
+                    nueva.UsuarioCreadorId = creador.Id;
+                    nueva.UsuarioAsignadoId = creador.Id;
                     nueva.FechaCreacion = DateTime.Now;
 
                     negocio.insertarConSp(nueva);

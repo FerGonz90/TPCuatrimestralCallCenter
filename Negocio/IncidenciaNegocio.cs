@@ -59,6 +59,8 @@ namespace Negocio
                 datos.agregarParametro("@TipoID", nueva.Tipo.Id );
                 datos.agregarParametro("@PrioridadID", nueva.Prioridad.Id);
                 datos.agregarParametro("@Problematica", nueva.Problematica);
+                datos.agregarParametro("@UsuarioCreadorID", nueva.UsuarioCreadorId);
+                datos.agregarParametro("@UsuarioAsignadoID", nueva.UsuarioAsignadoId);
                 datos.agregarParametro("@FechaCreacion", nueva.FechaCreacion);
 
                 datos.ejecutarAccion();

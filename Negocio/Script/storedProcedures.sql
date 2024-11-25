@@ -11,10 +11,12 @@ create procedure storedInsertarIncidencia
 @TipoID INT,
 @PrioridadID INT,
 @Problematica NVARCHAR(500),
+@UsuarioCreadorID int,
+@UsuarioAsignadoID int,
 @FechaCreacion DATETIME
 AS
-INSERT INTO Incidencias (ClienteID, TipoIncidenciaID, PrioridadID, EstadoID, Problematica, FechaCreacion)
-VALUES (@ClienteID, @TipoID, @PrioridadID, 1, @Problematica, @FechaCreacion);
+INSERT INTO Incidencias (ClienteID, TipoIncidenciaID, PrioridadID, EstadoID, Problematica, UsuarioCreadorID, UsuarioAsignadoID, FechaCreacion)
+VALUES (@ClienteID, @TipoID, @PrioridadID, 1, @Problematica, @UsuarioCreadorID, @UsuarioAsignadoID, @FechaCreacion);
 
 create procedure storedInsertarCliente
 @Nombre nvarchar(100), 

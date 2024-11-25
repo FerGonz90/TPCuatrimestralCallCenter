@@ -16,7 +16,9 @@ namespace Aplicacion_Web_Call_Center
         {
             if (Seguridad.Rol(Session["usuario"]) != Rol.Administrador)
             {
-                Response.Redirect("Home.aspx", false); 
+                Session.Add("error", "Permisos insuficientes");
+                Response.Redirect("Error.aspx", false);
+                return;
             }
 
         }
