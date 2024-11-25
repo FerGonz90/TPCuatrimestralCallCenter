@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace Negocio
                     aux.Id = (int)datos.Lector["UsuarioID"];
                     aux.NombreUsuario = (string)datos.Lector["Nombre"];
                     aux.Correo = (string)datos.Lector["Correo"];
-                    aux.Rol = (string)datos.Lector["RolNombre"];
+                    aux.Rol = (Rol)datos.Lector["RolID"];
 
                     lista.Add(aux);
                 }
@@ -60,5 +61,40 @@ namespace Negocio
             }
             finally { datos.cerrarConexion(); }
         }
+
+        public bool Login(string usuario, string contraseña, Usuario user)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta("Select UsuarioID, Nombre, Correo, RolID, Contraseña From Usuarios Where Nombre = @Nombre and Contraseña = @Contraseña");
+                datos.agregarParametro("@Nombre", usuario);
+                datos.agregarParametro("@Contraseña", contraseña);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    user.Id = (int)datos.Lector["UsuarioID"];
+                    user.NombreUsuario = (string)datos.Lector["Nombre"];
+                    user.Correo = (string)datos.Lector["Correo"];
+                    user.Rol = (Rol)datos.Lector["RolID"];
+                    user.Contraseña = (string)datos.Lector["Contraseña"];
+
+                    return true;
+                }
+                    return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

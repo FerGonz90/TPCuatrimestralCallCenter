@@ -11,7 +11,11 @@ namespace Aplicacion_Web_Call_Center
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["error"] != null)
+            {
+                lblErrorDetails.Text = Session["error"].ToString();
+                lblErrorDetails.Visible = true;
+            }
         }
     }
 }

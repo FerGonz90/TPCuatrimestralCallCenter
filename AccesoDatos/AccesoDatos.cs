@@ -69,6 +69,19 @@ namespace Acceso_Datos
             }
         }
 
+        public int ejecutarAccionScalar()
+        {
+            try
+            {
+                conexion.Open();
+                return int.Parse(comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void cerrarConexion()
         {
             if (conexion != null)

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
+using Negocio;
 
 namespace Aplicacion_Web_Call_Center
 {
@@ -24,21 +26,30 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            try
+            {
+                string username = txtUsername.Text;
+                string password = txtPassword.Text;
+                Usuario usuario = new Usuario();
+                UsuarioNegocio negocio = new UsuarioNegocio();
 
-            // Validación de usuario consultando base de datos.
-            if (username == "ok" && password == "ok") // Ejemplo 
-            {
-                // Autenticación exitosa, redirigir a la página principal
-                Response.Redirect("Home.aspx");
+                if (negocio.Login(username, password, usuario))  
+                {
+                    Session.Add("usuario", usuario);
+                    Response.Redirect("Home.aspx", false);
+                }
+                else
+                {
+                    lblErrorMessage.Text = "Usuario o contraseña incorrectos.";
+                    lblErrorMessage.Visible = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Mostrar mensaje de error
-                lblErrorMessage.Text = "Usuario o contraseña incorrectos.";
-                lblErrorMessage.Visible = true;
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
+            
         }
     }
 }

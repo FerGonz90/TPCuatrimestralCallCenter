@@ -23,13 +23,18 @@ namespace Aplicacion_Web_Call_Center
             {
                 Usuario nuevo = new Usuario();
                 UsuarioNegocio negocio = new UsuarioNegocio();
+                EmailService emailService = new EmailService();
 
                 nuevo.NombreUsuario = txtNombre.Text;
                 nuevo.Correo = txtEmail.Text;
-                nuevo.Rol = ddlRolUsuario.Text;
+                nuevo.Rol = (Rol)Enum.Parse(typeof(Rol), ddlRolUsuario.SelectedItem.Text);
                 nuevo.Contraseña = generarContraseñaAleatoria(8);
 
                 negocio.insertarUsuarioConSp(nuevo);
+                
+                string cuerpo  = "<html><body><h1>Usuario dado de alta</h1><p>Su usuario " + txtNombre.Text + " ha sido dado de alta y su contraseña es: " + nuevo.Contraseña + "</p></body></html>";
+                emailService.armarCorreo(txtEmail.Text, "Usuario dado de alta", cuerpo);
+                emailService.enviarMail();
 
                 Response.Redirect("Home.aspx", false);
             }
