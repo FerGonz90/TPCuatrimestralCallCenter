@@ -45,3 +45,10 @@
         .abm-column button:hover {
             background-color: #0056b3;
         }
+
+
+.nav-link.disabled {
+    color: #6c757d !important; /* Gris */
+    pointer-events: none; /* No permite clics */
+    cursor: default;
+}

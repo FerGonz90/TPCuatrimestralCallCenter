@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,15 @@ namespace Aplicacion_Web_Call_Center
             {
                 if (!Seguridad.SesionActiva(Session["usuario"]))
                     Response.Redirect("Default.aspx", false);
+
+                Usuario usuario = (Usuario)Session["usuario"];
+
+                if (usuario.Rol != Rol.Administrador)
+                {
+                    // Deshabilitar el enlace "ABM Tipo y Prioridad"
+                    lnkABMTipoPrioridad.Attributes["class"] += " disabled";
+                    lnkABMTipoPrioridad.Attributes["onclick"] = "return false;";
+                }
             }
         }
 

@@ -28,10 +28,10 @@
                             <a class="nav-link" href="VerIncidencias.aspx">Incidencias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ABMPrioridadesTipos.aspx">ABM Tipo y Prioridad</a>
+                            <a id="lnkABMTipoPrioridad" class="nav-link" href="ABMPrioridadesTipos.aspx" runat="server">ABM Tipo y Prioridad</a>
                         </li>
                         <li class="nav-item">
-                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link" OnClick="btnLogout_Click" >Logout</asp:LinkButton>
+                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link" OnClick="btnLogout_Click" CausesValidation="false">Logout</asp:LinkButton>
                         </li>
                     </ul>
                 </div>

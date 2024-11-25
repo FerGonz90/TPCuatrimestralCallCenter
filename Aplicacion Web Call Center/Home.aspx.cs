@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,7 +27,15 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnAltaUsuarios_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionUsuarios.aspx");
+            Usuario usuario = (Usuario)Session["usuario"];
+            if (usuario.Rol == Rol.Administrador)
+            {
+                Response.Redirect("GestionUsuarios.aspx");
+            }
+            else
+            {
+                lblPermisos.Visible = true;
+            }
         }
     }
 }

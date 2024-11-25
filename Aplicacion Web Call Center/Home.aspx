@@ -12,4 +12,6 @@
         <asp:Button ID="btnAltaUsuarios" Text="Alta de Usuarios" runat="server" OnClick="btnAltaUsuarios_Click" CssClass="btn btn-primary" />
     </div>
 
+    <asp:Label ID="lblPermisos" Text="Permisos insuficientes" CssClass="text-danger" runat="server" Visible="false" />
+
 </asp:Content>
