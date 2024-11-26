@@ -8,18 +8,25 @@ using Acceso_Datos;
 
 namespace Negocio
 {
-   public class IncidenciaNegocio
+    public class IncidenciaNegocio
     {
-        public List<Incidencia> listarInciConSP()
+        public List<Incidencia> listarInciConSP(Usuario usuario = null)
         {
             List<Incidencia> lista = new List<Incidencia>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setSP("storedListarIncidencias");
+                if (usuario != null)
+                {
+                    datos.setSP("storedListarIncidenciaPropias");
+                    datos.agregarParametro("UsuarioAsignadoID", usuario.Id);
+                }
+                else
+                    datos.setSP("storedListarIncidencias");
+
                 datos.ejecutarLectura();
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     Incidencia inci = new Incidencia();
                     inci.Id = (int)datos.Lector["IncidenciaId"];
@@ -31,7 +38,9 @@ namespace Negocio
                     inci.Prioridad.Descripcion = (string)datos.Lector["Prioridad"];
                     inci.Estado = new EstadoIncidencia();
                     inci.Estado.Descripcion = (string)datos.Lector["Estado"];
-                    inci.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    inci.UsuarioAsignado = new Usuario();
+                    inci.UsuarioAsignado.NombreUsuario = (string)datos.Lector["Usuario Asignado"];
+                    inci.UsuarioAsignado.Rol = (Rol)datos.Lector["RolID"];
 
                     lista.Add(inci);
                 }
@@ -48,19 +57,21 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
         public void insertarConSp(Incidencia nueva)
         {
             AccesoDatos datos = new AccesoDatos();
-                
+
             try
             {
                 datos.setSP("storedInsertarIncidencia");
                 datos.agregarParametro("@ClienteID", nueva.Cliente.ClienteID);
-                datos.agregarParametro("@TipoID", nueva.Tipo.Id );
+                datos.agregarParametro("@TipoID", nueva.Tipo.Id);
                 datos.agregarParametro("@PrioridadID", nueva.Prioridad.Id);
                 datos.agregarParametro("@Problematica", nueva.Problematica);
-                datos.agregarParametro("@UsuarioCreadorID", nueva.UsuarioCreadorId);
-                datos.agregarParametro("@UsuarioAsignadoID", nueva.UsuarioAsignadoId);
+                datos.agregarParametro("@UsuarioCreadorID", nueva.UsuarioCreador.Id);
+                datos.agregarParametro("@UsuarioAsignadoID", nueva.UsuarioAsignado.Id);
                 datos.agregarParametro("@FechaCreacion", nueva.FechaCreacion);
 
                 datos.ejecutarAccion();

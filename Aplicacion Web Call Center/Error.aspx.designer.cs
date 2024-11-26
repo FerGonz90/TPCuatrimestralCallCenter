@@ -15,12 +15,12 @@ namespace Aplicacion_Web_Call_Center
     {
 
         /// <summary>
-        /// Control lblErrorDetails.
+        /// Control lblDetalleError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorDetails;
+        protected global::System.Web.UI.WebControls.Label lblDetalleError;
     }
 }

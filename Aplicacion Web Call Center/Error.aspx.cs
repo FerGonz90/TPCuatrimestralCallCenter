@@ -11,11 +11,20 @@ namespace Aplicacion_Web_Call_Center
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string mensajeError = string.Empty;
+
             if (Session["error"] != null)
             {
-                lblErrorDetails.Text = Session["error"].ToString();
-                lblErrorDetails.Visible = true;
+                mensajeError = Session["error"].ToString();
             }
+            else
+            {
+                mensajeError = "Ha ocurrido un error inesperado.";
+            }
+
+            lblDetalleError.Text = mensajeError;
+            lblDetalleError.Visible = true;
+            Session.Remove("error");
         }
     }
 }

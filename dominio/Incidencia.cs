@@ -14,8 +14,8 @@ namespace dominio
             public PrioridadIncidencia Prioridad { get; set; }
             public EstadoIncidencia Estado { get; set; }
             public string Problematica { get; set; }
-            public int UsuarioCreadorId { get; set; }
-            public int UsuarioAsignadoId { get; set; }
+            public Usuario UsuarioCreador { get; set; }
+            public Usuario UsuarioAsignado { get; set; }
             public DateTime FechaCreacion { get; set; }
             public DateTime FechaCierre { get; set; }
             public string ComentarioFinal { get; set; }

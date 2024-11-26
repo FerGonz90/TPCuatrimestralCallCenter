@@ -16,7 +16,11 @@ namespace Aplicacion_Web_Call_Center
             if (!(Page is Default || Page is Error))
             {
                 if (!Seguridad.SesionActiva(Session["usuario"]))
+                {
                     Response.Redirect("Default.aspx", false);
+                    return;
+                }
+                    
 
                 Usuario usuario = (Usuario)Session["usuario"];
 
