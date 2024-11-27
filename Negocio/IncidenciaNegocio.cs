@@ -41,6 +41,7 @@ namespace Negocio
                     inci.UsuarioAsignado = new Usuario();
                     inci.UsuarioAsignado.NombreUsuario = (string)datos.Lector["Usuario Asignado"];
                     inci.UsuarioAsignado.Rol = (Rol)datos.Lector["RolID"];
+                    inci.UsuarioAsignado.Id = (int)datos.Lector["UsuarioAsignadoID"];
 
                     lista.Add(inci);
                 }
@@ -86,6 +87,26 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public void reasignarIncidencia(int idI, int idU) 
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setSP("storedReasignar");
+                datos.agregarParametro("@IdUsuario", idU);
+                datos.agregarParametro("@IdIncidencia", idI);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.cerrarConexion();}
+   
         }
     }
 }

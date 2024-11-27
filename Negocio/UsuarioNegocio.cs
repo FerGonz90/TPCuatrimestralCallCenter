@@ -96,5 +96,39 @@ namespace Negocio
             }
         }
 
+        public Usuario filtrarPorId(int id)
+        {
+            Usuario usuario = new Usuario();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "Select UsuarioID, Nombre, Correo, RolID From Usuarios Where UsuarioID = " + id;
+
+                datos.setConsulta(consulta);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    usuario.Id = (int)datos.Lector["UsuarioID"];
+                    usuario.NombreUsuario = (string)datos.Lector["Nombre"];
+                    usuario.Correo = (string)datos.Lector["Correo"];
+                    usuario.Rol = (Rol)datos.Lector["RolID"];
+
+                    return usuario;
+                }
+                else return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

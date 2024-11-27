@@ -1,5 +1,6 @@
 ﻿create procedure storedListarIncidencias as
-Select i.IncidenciaId, c.Nombre, t.Descripcion as 'Tipo Incidencia', p.Descripcion as Prioridad, e.Descripcion as Estado, u.Nombre as 'Usuario Asignado', u.RolID
+Select i.IncidenciaId, c.Nombre, t.Descripcion as 'Tipo Incidencia', p.Descripcion as Prioridad, 
+e.Descripcion as Estado, u.Nombre as 'Usuario Asignado', u.RolID, i.UsuarioAsignadoID
 from Incidencias i, Clientes c, TiposIncidencia t, Prioridades p, Estados e, Usuarios u
 where    i.ClienteID = c.ClienteID
 and	  i.TipoIncidenciaID = t.TipoIncidenciaID
@@ -51,14 +52,14 @@ values (@Nombre, @Correo, @RolID, @Contraseña);
 
 create procedure storedlistarUsuarioConSp
 as
-Select u.UsuarioID, u.Nombre, u.Correo, r.RolNombre 
-from Usuarios u, Roles r
-where u.RolID = r.RolID;
+Select UsuarioID, Nombre, Correo, RolID 
+from Usuarios;
 
 create procedure storedListarIncidenciaPropias
 @UsuarioAsignadoID int
 as
-Select i.IncidenciaId, c.Nombre, t.Descripcion as 'Tipo Incidencia', p.Descripcion as Prioridad, e.Descripcion as Estado, u.Nombre as 'Usuario Asignado', u.RolID
+Select i.IncidenciaId, c.Nombre, t.Descripcion as 'Tipo Incidencia', p.Descripcion as Prioridad, 
+e.Descripcion as Estado, u.Nombre as 'Usuario Asignado', u.RolID, i.UsuarioAsignadoID
 from Incidencias i, Clientes c, TiposIncidencia t, Prioridades p, Estados e, Usuarios u
 where    i.ClienteID = c.ClienteID
 and	  i.TipoIncidenciaID = t.TipoIncidenciaID
@@ -66,4 +67,13 @@ and	  i.PrioridadID = p.PrioridadID
 and   i.EstadoID = e.EstadoID
 and   i.UsuarioAsignadoID = u.UsuarioID
 and   i.UsuarioAsignadoID = @UsuarioAsignadoID;
+
+create procedure storedReasignar
+@IdUsuario int,
+@IdIncidencia int
+as
+Update Incidencias 
+set UsuarioAsignadoID = @IdUsuario,
+     EstadoID = 2
+where IncidenciaID = @IdIncidencia
 

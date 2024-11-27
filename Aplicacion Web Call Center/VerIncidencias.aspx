@@ -103,6 +103,7 @@
                     <asp:BoundField DataField="Prioridad.Descripcion" HeaderText="Prioridad" />
                     <asp:BoundField DataField="Estado.Descripcion" HeaderText="Estado" />
                     <asp:BoundField DataField="UsuarioAsignado.NombreUsuario" HeaderText="Usuario Asignado" />
+                    <asp:BoundField DataField="UsuarioAsignado.Id" HeaderText="Id de Usuario"  />     
 
                     <asp:TemplateField HeaderText="Rol">
                         <ItemTemplate>
