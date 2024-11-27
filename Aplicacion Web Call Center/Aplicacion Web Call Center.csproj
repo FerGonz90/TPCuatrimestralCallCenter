@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="ABMPrioridadesTipos.aspx" />
     <Content Include="AdmClientes.aspx" />
+    <Content Include="AdmIncidencias.aspx" />
     <Content Include="Contenido\estilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
@@ -95,6 +96,13 @@
     </Compile>
     <Compile Include="AdmClientes.aspx.designer.cs">
       <DependentUpon>AdmClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdmIncidencias.aspx.cs">
+      <DependentUpon>AdmIncidencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdmIncidencias.aspx.designer.cs">
+      <DependentUpon>AdmIncidencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

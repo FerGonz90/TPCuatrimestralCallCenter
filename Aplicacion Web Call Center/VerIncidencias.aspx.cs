@@ -17,6 +17,7 @@ namespace Aplicacion_Web_Call_Center
             FiltroAvanzado = cbxFiltroAvanzado.Checked;
             if (!IsPostBack)
             {
+                VisualizarPorRol();
                 cargarIncidencias();
                 cargarTiposIncidencia();
                 cargarPrioridades();
@@ -87,8 +88,14 @@ namespace Aplicacion_Web_Call_Center
         protected void dgvIncidencias_SelectedIndexChanged(object sender, EventArgs e)
         {
             string idIncidencia = dgvIncidencias.SelectedDataKey.Value.ToString();
-            
-            Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia);
+
+            if (Seguridad.Rol(Session["usuario"]) == Rol.Telefonista)
+            {
+                Response.Redirect("AdmIncidencias.aspx", false);
+                return;
+            }
+
+            Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia, false);
         }
 
         protected void dgvIncidencias_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -233,5 +240,24 @@ namespace Aplicacion_Web_Call_Center
 
             ocultarFiltros();
         }
+
+        private void VisualizarPorRol()
+        {
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (Seguridad.Rol(usuario) == Rol.Telefonista)
+            {
+                lblFiltrarU.Visible = false;
+                txtFiltroU.Visible = false;
+
+                ((CommandField)dgvIncidencias.Columns[8]).SelectText = "Administrar";
+
+                ddlRol.Enabled = false;
+                //ddlTiposIncidencia.Enabled = false;
+                //ddlPrioridad.Enabled = false;
+                //ddlEstado.Enabled = false;
+            }
+        }
+
     }
 }

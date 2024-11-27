@@ -21,7 +21,7 @@ namespace Aplicacion_Web_Call_Center
             {
                 if (cod == "b")
                     ((CommandField)dgvClientes.Columns[4]).SelectText = "Seleccionar";
-
+                
                 ClienteNegocio negocio = new ClienteNegocio();
                 Session.Add("listaCliente", negocio.listar());
                 dgvClientes.DataSource = Session["listaCliente"];
