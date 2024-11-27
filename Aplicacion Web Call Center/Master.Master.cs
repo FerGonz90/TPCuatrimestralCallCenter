@@ -18,6 +18,7 @@ namespace Aplicacion_Web_Call_Center
                 if (!Seguridad.SesionActiva(Session["usuario"]))
                 {
                     Response.Redirect("Default.aspx", false);
+                    Response.End();
                     return;
                 }
                     
@@ -35,7 +36,7 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-            Session.Clear();
+            Session.Abandon();
             Response.Redirect("Default.aspx");
         }
     }

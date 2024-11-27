@@ -18,7 +18,8 @@ namespace Aplicacion_Web_Call_Center
             Exception exc = Server.GetLastError();
 
             Session.Add("error", exc.Message);
-            Response.Redirect("Error.aspx");
+            //Response.Redirect("Error.aspx");
+            Server.Transfer("Error.aspx");
         }
     }
 }

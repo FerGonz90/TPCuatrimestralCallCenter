@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.SessionState;
+using System.Web;
 using dominio;
 
 namespace Negocio
@@ -21,7 +23,14 @@ namespace Negocio
 
         public static Rol Rol(object user)
         {
-            Usuario usuario = user != null ? (Usuario)user : null;
+            if (!SesionActiva(user))
+            {
+                HttpContext.Current.Response.Redirect("Default.aspx", false);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+                return default(Rol);
+            }
+
+            Usuario usuario = (Usuario)user;
             return usuario.Rol;
         }
     }

@@ -20,7 +20,6 @@ namespace Aplicacion_Web_Call_Center
                 Response.Redirect("Error.aspx", false);
                 return;
             }
-
         }
     }
 }

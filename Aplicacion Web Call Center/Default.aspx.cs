@@ -13,6 +13,8 @@ namespace Aplicacion_Web_Call_Center
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Add("inicializacion", " ");
+
             var masterPage = this.Master;
             if (masterPage != null)
             {

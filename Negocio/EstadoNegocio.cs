@@ -1,32 +1,32 @@
-﻿using System;
+﻿using Acceso_Datos;
+using dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Acceso_Datos;
-using dominio;
 
 namespace Negocio
 {
-    public class PrioridadNegocio
+    public class EstadoNegocio
     {
-        public List<PrioridadIncidencia> listar()
+        public List<EstadoIncidencia> listar()
         {
-            List<PrioridadIncidencia> lista = new List<PrioridadIncidencia>();
+            List<EstadoIncidencia> lista = new List<EstadoIncidencia>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setConsulta("Select PrioridadID, Descripcion from Prioridades");
+                datos.setConsulta("Select EstadoID, Descripcion from Estados");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    PrioridadIncidencia prioridad = new PrioridadIncidencia();
-                    prioridad.Id = (int)datos.Lector["PrioridadID"];
-                    prioridad.Descripcion = (string)datos.Lector["Descripcion"];
+                    EstadoIncidencia estado = new EstadoIncidencia();
+                    estado.Id = (int)datos.Lector["EstadoID"];
+                    estado.Descripcion = (string)datos.Lector["Descripcion"];
 
-                    lista.Add(prioridad);
+                    lista.Add(estado);
                 }
                 return lista;
             }

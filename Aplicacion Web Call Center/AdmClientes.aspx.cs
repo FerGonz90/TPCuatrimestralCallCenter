@@ -52,6 +52,7 @@ namespace Aplicacion_Web_Call_Center
         protected void ckbFiltrarId_CheckedChanged(object sender, EventArgs e)
         {
             FiltrarPorId = ckbFiltrarId.Checked;
+            txtFiltro.Text = "";
             txtFiltro.Enabled = !FiltrarPorId;
         }
 

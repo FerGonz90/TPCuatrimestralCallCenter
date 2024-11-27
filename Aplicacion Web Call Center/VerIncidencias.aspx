@@ -8,20 +8,32 @@
 
     <h2>Incidencias</h2>
 
-    <%--    rrrr--%>
-
     <asp:UpdatePanel ID="udpUpdatePanel" runat="server">
         <ContentTemplate>
             <div class="row mb-2">
-                <div class="col-6">
-                    <div class="d-flex align-items-center">
-                        <asp:Label Text="Filtrar: " ID="lblFiltrar" runat="server" class="me-2" />
+                <div class="col-3">
+                    <div>
+                        <asp:Label Text="Filtrar por Cliente: " ID="lblFiltrar" runat="server" class="me-2" />
                         <asp:TextBox ID="tbxFiltro" AutoPostBack="true" CssClass="form-control" OnTextChanged="tbxFiltro_TextChanged" runat="server" />
                     </div>
                 </div>
-                <div class="col-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
-                    <div class="mb-2">
-                        <asp:CheckBox Text="Filtro Avanzado" CssClass="" ID="cbxFiltroAvanzado"
+                <div class="col-3">
+                    <div>
+                        <asp:Label Text="Filtrar por Usuario: " ID="lblFiltrarU" runat="server" class="me-2" />
+                        <asp:TextBox ID="txtFiltroU" AutoPostBack="true" CssClass="form-control" OnTextChanged="txtFiltroU_TextChanged" runat="server" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div>
+                        <asp:Label Text=" " ID="Label1" runat="server" />
+                        <asp:Button Text="Limpiar Filtros" ID="btnLimpiarFiltros" CssClass="btn btn-primary"
+                            OnClick="btnLimpiarFiltros_Click" runat="server" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div>
+                        <asp:Label Text=" " ID="Label2" runat="server" />
+                        <asp:CheckBox Text="Más filtros" CssClass="form-check" ID="cbxFiltroAvanzado"
                             AutoPostBack="true" OnCheckedChanged="cbxFiltroAvanzado_CheckedChanged" runat="server" />
                     </div>
                 </div>
@@ -33,53 +45,51 @@
 
                 <div class="col-3">
                     <div class="mb-2">
-                        <asp:Label Text="Campo" ID="lblCampo" runat="server" />
-                        <asp:DropDownList runat="server" AutoPostBack="true" ID="ddlCampo" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged" CssClass="form-control">
-                            <asp:ListItem Text="Nombre" />
-                            <asp:ListItem Text="Tipo" />
-                            <asp:ListItem Text="Número" />
+                        <asp:Label Text="Tipo de Incidencia" ID="lblTipoInci" runat="server" />
+                        <asp:DropDownList ID="ddlTiposIncidencia" AutoPostBack="true" CssClass="form-select form-select-sm mb-3 rounded-pill shadow-sm"
+                            OnSelectedIndexChanged="ddlTiposIncidencia_SelectedIndexChanged" runat="server">
+                            <asp:ListItem Text="Filtrar por" Value="" />
                         </asp:DropDownList>
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="mb-2">
-                        <asp:Label Text="Criterio" ID="lblCriterio" runat="server" />
-                        <asp:DropDownList runat="server" ID="ddlCriterio" CssClass="form-control"></asp:DropDownList>
-                    </div>
-                </div>
-
-                <div class="col-3">
-                    <div class="mb-2">
-                        <asp:Label Text="Filtro" ID="lblFiltro" runat="server" />
-                        <asp:TextBox ID="txtFiltroAvanzado" CssClass="form-control" runat="server" />
+                        <asp:Label Text="Prioridad" ID="lblPrioridad" runat="server" />
+                        <asp:DropDownList ID="ddlPrioridad" AutoPostBack="true" CssClass="form-select form-select-sm mb-3 rounded-pill shadow-sm"
+                            OnSelectedIndexChanged="ddlPrioridad_SelectedIndexChanged" runat="server">
+                            <asp:ListItem Text="Filtrar por" Value="" />
+                        </asp:DropDownList>
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="mb-2">
                         <asp:Label Text="Estado" ID="lblEstado" runat="server" />
-                        <asp:DropDownList CssClass="form-control" ID="ddlEstado" runat="server">
-                            <asp:ListItem Text="Todos" />
-                            <asp:ListItem Text="Activos" />
-                            <asp:ListItem Text="Inactivos" />
+                        <asp:DropDownList ID="ddlEstado" AutoPostBack="true" CssClass="form-select form-select-sm mb-3 rounded-pill shadow-sm"
+                            OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged" runat="server">
+                            <asp:ListItem Text="Filtrar por" Value="" />
+                        </asp:DropDownList>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="mb-2">
+                        <asp:Label Text="Rol" ID="lblRol" runat="server" />
+                        <asp:DropDownList CssClass="form-select form-select-sm mb-3 rounded-pill shadow-sm"
+                            ID="ddlRol" OnSelectedIndexChanged="ddlRol_SelectedIndexChanged"
+                            AutoPostBack="true" runat="server">
+                            <asp:ListItem Text="Administrador" />
+                            <asp:ListItem Text="Telefonista" />
+                            <asp:ListItem Text="Supervisor" />
                         </asp:DropDownList>
                     </div>
                 </div>
 
             </div>
 
-            <div class="row mb-3">
-                <div class="col-3">
-                    <div class="mb-2">
-                        <asp:Button Text="Buscar" ID="btnBuscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" runat="server" />
-                    </div>
-                </div>
-            </div>
             <%} %>
-
-
-            <%--    rrrr--%>
 
             <asp:GridView ID="dgvIncidencias" DataKeyNames="Id"
                 OnSelectedIndexChanged="dgvIncidencias_SelectedIndexChanged" runat="server" AllowPaging="True"
@@ -102,7 +112,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:CommandField ShowSelectButton="true" SelectText="Asignar" HeaderText="Acción" />
+                    <asp:CommandField ShowSelectButton="true" SelectText="Reasignar" HeaderText="Acción" />
                 </Columns>
             </asp:GridView>
         </ContentTemplate>
