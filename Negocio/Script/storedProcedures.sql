@@ -108,4 +108,15 @@ as
 update Incidencias
 SET EstadoID = 5,
 ComentarioCierre = @ComCierre
-where IncidenciaID = @Id
+where IncidenciaID = @Id;
+
+create procedure storedReabrirInci
+@Id int,
+@IdAdmin int
+as
+UPDATE Incidencias
+SET EstadoID = 6,
+UsuarioAsignadoID = @IdAdmin
+where IncidenciaID = @Id;
+
+

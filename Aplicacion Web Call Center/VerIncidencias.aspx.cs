@@ -146,12 +146,24 @@ namespace Aplicacion_Web_Call_Center
                     }
                     else
                     {
-                        Response.Redirect("AdmIncidencias.aspx?inciId=" + idIncidencia);
+                        Response.Redirect("AdmIncidencias.aspx?inciId=" + idIncidencia, false);
                     }
 
                 }
                 else
-                    Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia);
+                {
+                    if (dgvIncidencias.SelectedRow.Cells[4].Text == "Resuelto" ||
+                        dgvIncidencias.SelectedRow.Cells[4].Text == "Cerrado")
+                    {
+                        lblError.Visible = true;
+                        btnSi.Visible = true;
+                        btnNo.Visible = true;
+                        lblError.Text = "No se puede reasignar Incidencias Resueltas o Cerradas. ¿Desea Reabrirla?";
+                    }
+                    else
+                        Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia, false);
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -379,5 +391,25 @@ namespace Aplicacion_Web_Call_Center
             }
         }
 
+        protected void btnSi_Click(object sender, EventArgs e)
+        {
+            Usuario admin = (Usuario)Session["usuario"];
+            int idAdmin = admin.Id;
+
+            int idInci = (int)dgvIncidencias.SelectedDataKey.Value;
+            IncidenciaNegocio negocio = new IncidenciaNegocio();
+
+            negocio.reabrirIncidencia(idInci, idAdmin);
+
+            Response.Redirect("VerIncidencias.aspx", false);
+
+        }
+
+        protected void btnNo_Click(object sender, EventArgs e)
+        {
+            btnNo.Visible = false;
+            btnSi.Visible = false;
+            lblError.Visible = false;
+        }
     }
 }

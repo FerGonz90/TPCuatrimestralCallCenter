@@ -140,6 +140,30 @@ namespace Negocio
             }
         }
 
+        public void reabrirIncidencia(int idInci, int idAdmin)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setSP("storedReabrirInci");
+                datos.agregarParametro("@Id", idInci);
+                datos.agregarParametro("@IdAdmin", idAdmin);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void cerrarIncidencia(int id, string comen)
         {
             AccesoDatos datos = new AccesoDatos();

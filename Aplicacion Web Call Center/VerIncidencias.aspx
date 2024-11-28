@@ -26,6 +26,8 @@
                 <div class="col-6">
                     <div>
                         <asp:Label Text=" " ID="lblError" CssClass="text-danger" runat="server" />
+                        <asp:Button ID="btnSi" Text="Si" Visible="false" CssClass="btn btn-success" OnClick="btnSi_Click" runat="server" />
+                        <asp:Button ID="btnNo" Text="No" Visible="false" CssClass="btn btn-danger" OnClick="btnNo_Click" runat="server" />
 
                     </div>
                 </div>
