@@ -53,6 +53,7 @@ namespace Aplicacion_Web_Call_Center
             {
                 int clienteId = int.Parse(txtClientes.Text);
                 ClienteNegocio negocio2 = new ClienteNegocio();
+                EmailService emailService = new EmailService();
 
                 Cliente clienteExistente = negocio2.filtrarPorId(clienteId);
                 
@@ -85,6 +86,17 @@ namespace Aplicacion_Web_Call_Center
                     nueva.FechaCreacion = DateTime.Now;
 
                     negocio.insertarConSp(nueva);
+
+                    int IDinci = negocio.maxIdIncidencia();
+                    string correo = negocio.maxCorreoIncidencia();
+                    string TipoInci = negocio.maxTipoIncidencia();
+                    string Problematica = txtDescripcion.Text;
+
+                    string cuerpo = "<html><body><h1>Incidencia N°" + IDinci + " creada</h1><p>Motivo: "
+                        + TipoInci + "</p><p>Detalle: " + Problematica + "</p>";
+
+                    emailService.armarCorreo(correo, "Incidencia creada", cuerpo);
+                    emailService.enviarMail();
 
                     Response.Redirect("Home.aspx", false);
                 }

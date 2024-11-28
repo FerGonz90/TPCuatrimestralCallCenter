@@ -114,7 +114,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             int estadoInci;
 
-            if(estado)
+            if (estado)
                 estadoInci = 4;
             else
                 estadoInci = 3;
@@ -125,7 +125,7 @@ namespace Negocio
                 datos.agregarParametro("@Id", id);
                 datos.agregarParametro("@Problematica", proble);
                 datos.agregarParametro("Estado", estadoInci);
-                
+
                 datos.ejecutarAccion();
 
             }
@@ -208,5 +208,95 @@ namespace Negocio
 
         }
 
+        public int maxIdIncidencia()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int idIncidencia;
+            try
+            {
+                datos.setConsulta("Select MAX(IncidenciaID) as MaxId from Incidencias");
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    idIncidencia = (int)datos.Lector["MaxId"];
+                    return idIncidencia;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+
+        }
+
+        public string maxCorreoIncidencia()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            string correo;
+            try
+            {
+                datos.setConsulta("select Correo from Clientes WHERE ClienteID = " +
+                                  "(SELECT ClienteID FROM Incidencias WHERE IncidenciaID = " +
+                                  "(select MAX(IncidenciaID) from Incidencias))");
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    correo = (string)datos.Lector["Correo"];
+                    return correo;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+
+        }
+
+        public string maxTipoIncidencia()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            string tipoInci;
+            try
+            {
+                datos.setConsulta("select DESCRIPCION from TiposIncidencia WHERE TipoIncidenciaID = " +
+                                  "(SELECT TipoIncidenciaID FROM Incidencias WHERE IncidenciaID = " +
+                                  "(select MAX(IncidenciaID) from Incidencias))");
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    tipoInci = (string)datos.Lector["DESCRIPCION"];
+                    return tipoInci;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+
+        }
     }
 }
