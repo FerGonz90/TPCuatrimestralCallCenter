@@ -17,12 +17,12 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnAltaIncidencias_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionIncidencias.aspx");
+            Response.Redirect("GestionIncidencias.aspx", false);
         }
 
         protected void btnAltaClientes_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionClientes.aspx");
+            Response.Redirect("GestionClientes.aspx", false);
         }
 
         protected void btnAltaUsuarios_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace Aplicacion_Web_Call_Center
                 Usuario usuario = (Usuario)Session["usuario"];
                 if (usuario.Rol == Rol.Administrador)
                 {
-                    Response.Redirect("GestionUsuarios.aspx");
+                    Response.Redirect("GestionUsuarios.aspx", false);
                 }
                 else
                 {

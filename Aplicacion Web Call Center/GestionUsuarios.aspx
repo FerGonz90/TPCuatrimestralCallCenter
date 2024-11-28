@@ -12,22 +12,29 @@
             <div class="form-group mb-3">
                 <asp:Label ID="lblNombre" Text="Nombre del Usuario" runat="server" CssClass="form-label" />
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
-                <asp:RequiredFieldValidator 
-                    ID="rfvNombre" 
-                    ControlToValidate="txtNombre" 
-                    ErrorMessage="El nombre es requerido" 
-                    CssClass="text-danger ms-2" 
+                <asp:RequiredFieldValidator
+                    ID="rfvNombre"
+                    ControlToValidate="txtNombre"
+                    ErrorMessage="El nombre es requerido"
+                    CssClass="text-danger ms-2"
                     runat="server" />
             </div>
 
             <div class="form-group mb-3">
                 <asp:Label ID="lblEmail" Text="Email del Usuario" runat="server" CssClass="form-label" />
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" />
-                <asp:RequiredFieldValidator 
-                    ID="rfvEmail" 
-                    ControlToValidate="txtEmail" 
-                    ErrorMessage="El email es requerido" 
-                    CssClass="text-danger ms-2" 
+                <asp:RequiredFieldValidator
+                    ID="rfvEmail"
+                    ControlToValidate="txtEmail"
+                    ErrorMessage="El email es requerido"
+                    CssClass="text-danger ms-2"
+                    runat="server" />
+                <asp:RegularExpressionValidator
+                    ID="revEmail"
+                    ControlToValidate="txtEmail"
+                    ValidationExpression="^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$"
+                    ErrorMessage="Por favor, ingresa un correo electrónico válido"
+                    CssClass="text-danger ms-2"
                     runat="server" />
             </div>
 
