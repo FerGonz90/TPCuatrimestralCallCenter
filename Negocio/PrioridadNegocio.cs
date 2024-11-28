@@ -40,5 +40,41 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void insertarPrioridad(string desc)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta("Insert into Prioridades (Descripcion) Values  ('" + desc + "')");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+        }
+
+        public void modificarPrioridad(string desc, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta("Update Prioridades Set Descripcion = '" + desc + "' Where PrioridadID = " + id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+        }
     }
 }

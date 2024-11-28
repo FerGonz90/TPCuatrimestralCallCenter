@@ -43,5 +43,40 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void insertarTipoIncidencia(string desc)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta("Insert into TiposIncidencia (Descripcion) Values  ('" + desc + "')");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+        }
+
+        public void modificarTipoIncidencia(string desc, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta("Update TiposIncidencia Set Descripcion = '" + desc + "' Where TipoIncidenciaID = " + id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { datos.cerrarConexion(); }
+        }
     }
 }
