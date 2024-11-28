@@ -53,7 +53,7 @@ namespace Aplicacion_Web_Call_Center
             {
                 int clienteId = int.Parse(txtClientes.Text);
                 ClienteNegocio negocio2 = new ClienteNegocio();
-                EmailService emailService = new EmailService();
+                
 
                 Cliente clienteExistente = negocio2.filtrarPorId(clienteId);
                 
@@ -87,6 +87,7 @@ namespace Aplicacion_Web_Call_Center
 
                     negocio.insertarConSp(nueva);
 
+                    EmailService emailService = new EmailService();
                     int IDinci = negocio.maxIdIncidencia();
                     string correo = negocio.maxCorreoIncidencia();
                     string TipoInci = negocio.maxTipoIncidencia();

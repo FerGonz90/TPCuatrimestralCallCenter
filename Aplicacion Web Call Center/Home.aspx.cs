@@ -27,15 +27,24 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnAltaUsuarios_Click(object sender, EventArgs e)
         {
-            Usuario usuario = (Usuario)Session["usuario"];
-            if (usuario.Rol == Rol.Administrador)
+            try
             {
-                Response.Redirect("GestionUsuarios.aspx");
+                Usuario usuario = (Usuario)Session["usuario"];
+                if (usuario.Rol == Rol.Administrador)
+                {
+                    Response.Redirect("GestionUsuarios.aspx");
+                }
+                else
+                {
+                    lblPermisos.Visible = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblPermisos.Visible = true;
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx");
             }
+            
         }
     }
 }

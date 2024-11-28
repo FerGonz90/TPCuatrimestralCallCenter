@@ -81,7 +81,7 @@ create procedure storedListarInciPorId
 @Id int
 as
 SELECT  i.IncidenciaID, c.Nombre, t.Descripcion as 'Tipo', p.Descripcion as 'Prioridad', e.Descripcion as 'Estado', 
-i.Problematica, i.FechaCreacion, uc.Nombre as 'Creador', ua.Nombre as 'Asignado', i.ComentarioCierre
+i.Problematica, i.FechaCreacion, uc.Nombre as 'Creador', ua.Nombre as 'Asignado', i.ComentarioCierre, c.ClienteID
 FROM Incidencias i, Clientes c, TiposIncidencia t, Prioridades p, Estados e, Usuarios uc, Usuarios ua
 where i.IncidenciaID = @Id
 and i.ClienteID = c.ClienteID

@@ -21,6 +21,7 @@ namespace Aplicacion_Web_Call_Center
             txtUsuarioCreador.Enabled = false;
             txtPrioridad.Enabled = false;
             txtTipo.Enabled = false;
+            txtIdCliente.Enabled = false;
             lblError.Visible = false;
             
             IncidenciaNegocio negocio = new IncidenciaNegocio();
@@ -49,6 +50,7 @@ namespace Aplicacion_Web_Call_Center
                         txtUsuarioCreador.Text = incidencia.UsuarioCreador.NombreUsuario;
                         txtUsuarioAsignado.Text = incidencia.UsuarioAsignado.NombreUsuario;
                         txtProblematica.Text = incidencia.Problematica;
+                        txtIdCliente.Text = incidencia.Cliente.ClienteID.ToString();
                     }
                     
                 }
@@ -100,50 +102,107 @@ namespace Aplicacion_Web_Call_Center
             }
             else
             {
-                if (string.IsNullOrEmpty(txtProblematica.Text) || string.IsNullOrWhiteSpace(txtProblematica.Text))
+                try
                 {
-                    lblError.Visible = true;
-                    lblError.Text = "No puede dejar el campo de Problemática vacío";
-                }
-                else
-                {
-                    if (validarCambioProblem())
+                    if (string.IsNullOrEmpty(txtProblematica.Text) || string.IsNullOrWhiteSpace(txtProblematica.Text))
                     {
-                        lblError.Visible = false;
-                        IncidenciaNegocio negocio = new IncidenciaNegocio();
-                        int id = int.Parse(txtId.Text);
-                        string proble = txtProblematica.Text;
-                        negocio.modifIncidencia(id, proble, true);
-
-                        Response.Redirect("VerIncidencias.aspx", false);
+                        lblError.Visible = true;
+                        lblError.Text = "No puede dejar el campo de Problemática vacío";
                     }
                     else
                     {
-                        lblError.Visible = true;
-                        lblError.Text = "Debe agregar un comentario al campo de Problemática";
+                        if (validarCambioProblem())
+                        {
+                            lblError.Visible = false;
+                            IncidenciaNegocio negocio = new IncidenciaNegocio();
+                            int id = int.Parse(txtId.Text);
+                            string proble = txtProblematica.Text;
+
+                            negocio.modifIncidencia(id, proble, true);
+
+                            ClienteNegocio clienteNegocio = new ClienteNegocio();
+                            Cliente cliente = new Cliente();
+                            int idCliente = int.Parse(txtIdCliente.Text);
+                            cliente = clienteNegocio.filtrarPorId(idCliente);
+                            string correoCliente = cliente.Correo;
+
+                            EmailService emailService = new EmailService();
+                            int IDinci = int.Parse(txtId.Text);
+
+                            string TipoInci = txtTipo.Text;
+                            string Problematica = txtProblematica.Text;
+
+                            string cuerpo = "<html><body><h1>Incidencia N°" + IDinci + " resuelta</h1><p>Motivo: "
+                                + TipoInci + "</p><p>Detalle: " + Problematica + "</p>";
+
+                            emailService.armarCorreo(correoCliente, "Incidencia resuelta", cuerpo);
+                            emailService.enviarMail();
+
+                            Response.Redirect("VerIncidencias.aspx", false);
+                        }
+                        else
+                        {
+                            lblError.Visible = true;
+                            lblError.Text = "Debe agregar un comentario al campo de Problemática";
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Session.Add("error", ex.Message);
+                    Response.Redirect("Error.aspx");
+                }
+                
+                
             }
         }
 
         protected void btnCerrar_Click(object sender, EventArgs e)
         {
-            if(!validarCampoComFin())
+            try
             {
-                lblError.Visible = true;
-                lblError.Text = "Debe dejar un comentario de cierre para cerrar el incidente";
+                if (!validarCampoComFin())
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Debe dejar un comentario de cierre para cerrar el incidente";
+                }
+                else
+                {
+                    lblError.Visible = false;
+
+                    IncidenciaNegocio negocio = new IncidenciaNegocio();
+                    int id = int.Parse(txtId.Text);
+                    string comCierre = txtComentarioCierre.Text;
+                    negocio.cerrarIncidencia(id, comCierre);
+
+                    ClienteNegocio clienteNegocio = new ClienteNegocio();
+                    Cliente cliente = new Cliente();
+                    int idCliente = int.Parse(txtIdCliente.Text);
+                    cliente = clienteNegocio.filtrarPorId(idCliente);
+                    string correoCliente = cliente.Correo;
+
+                    EmailService emailService = new EmailService();
+                    int IDinci = int.Parse(txtId.Text);
+
+                    string TipoInci = txtTipo.Text;
+                    string comentCierre = txtComentarioCierre.Text;
+
+                    string cuerpo = "<html><body><h1>Incidencia N°" + IDinci + " cerrada</h1><p>Motivo: "
+                        + TipoInci + "</p><p>Detalle: " + comentCierre + "</p>";
+
+                    emailService.armarCorreo(correoCliente, "Incidencia cerrada", cuerpo);
+                    emailService.enviarMail();
+
+
+                    Response.Redirect("VerIncidencias.aspx", false);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblError.Visible = false;
-
-                IncidenciaNegocio negocio = new IncidenciaNegocio();
-                int id = int.Parse(txtId.Text);
-                string comCierre = txtComentarioCierre.Text;
-                negocio.cerrarIncidencia(id, comCierre);
-
-                Response.Redirect("VerIncidencias.aspx", false);
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx");
             }
+            
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

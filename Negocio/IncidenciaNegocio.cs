@@ -191,6 +191,7 @@ namespace Negocio
                     incidencia.UsuarioAsignado = new Usuario();
                     incidencia.UsuarioCreador.NombreUsuario = (string)datos.Lector["Creador"];
                     incidencia.UsuarioAsignado.NombreUsuario = (string)datos.Lector["Asignado"];
+                    incidencia.Cliente.ClienteID = (int)datos.Lector["ClienteID"];
                     //incidencia.ComentarioFinal = (string)datos.Lector["ComentarioCierre"];
                 }
 

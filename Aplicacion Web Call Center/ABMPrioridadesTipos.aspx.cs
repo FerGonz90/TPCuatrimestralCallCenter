@@ -14,12 +14,21 @@ namespace Aplicacion_Web_Call_Center
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Seguridad.Rol(Session["usuario"]) != Rol.Administrador)
+            try
             {
-                Session.Add("error", "Permisos insuficientes");
-                Response.Redirect("Error.aspx", false);
-                return;
+                if (Seguridad.Rol(Session["usuario"]) != Rol.Administrador)
+                {
+                    Session.Add("error", "Permisos insuficientes");
+                    Response.Redirect("Error.aspx", false);
+                    return;
+                }
             }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx");
+            }
+            
         }
     }
 }

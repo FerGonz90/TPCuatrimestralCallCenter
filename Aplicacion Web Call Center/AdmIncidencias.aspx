@@ -20,10 +20,16 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="mb-3">
                     <label for="txtCliente" class="form-label">Cliente</label>
                     <asp:TextBox ID="txtCliente" runat="server" CssClass="form-control" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="txtIdCliente" class="form-label">Id del cliente</label>
+                    <asp:TextBox ID="txtIdCliente" runat="server" CssClass="form-control" />
                 </div>
             </div>
         </div>
