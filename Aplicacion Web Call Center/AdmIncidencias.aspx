@@ -1,4 +1,4 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="AdmIncidencias.aspx.cs" Inherits="Aplicacion_Web_Call_Center.AdmIncidencias" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="AdmIncidencias.aspx.cs" Inherits="Aplicacion_Web_Call_Center.AdmIncidencias" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -7,6 +7,10 @@
 
     <div class="container mt-5">
         <h1 class="text-center">Administrar Incidencias</h1>
+
+        <div class="mb-3">
+            <asp:Label ID="lblError" Text="" CssClass="text-danger" runat="server" />
+        </div>
 
         <div class="row">
             <div class="col-md-6">
@@ -81,24 +85,24 @@
 
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="txtComentarioFinal" class="form-label">Comentario de cierre</label>
-                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4" />
+                    <label for="txtComentarioCierre" class="form-label">Comentario de cierre</label>
+                    <asp:TextBox ID="txtComentarioCierre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4" />
                 </div>
             </div>
         </div>
 
-        <div class="row text-center mt-4">
+        <div class="row text-center mt-4 mb-3">
             <div class="col-md-3">
-                <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-primary w-100" />
+                <asp:Button ID="btnActualizar" OnClick="btnActualizar_Click" runat="server" Text="Actualizar" CssClass="btn btn-primary w-100" />
             </div>
             <div class="col-md-3">
-                <asp:Button ID="btnResolver" runat="server" Text="Resolver" CssClass="btn btn-primary w-100" />
+                <asp:Button ID="btnResolver" OnClick="btnResolver_Click" runat="server" Text="Resolver" CssClass="btn btn-primary w-100" />
             </div>
             <div class="col-md-3">
-                <asp:Button ID="btnCerrar" runat="server" Text="Cerrar" CssClass="btn btn-primary w-100" />
+                <asp:Button ID="btnCerrar" OnClick="btnCerrar_Click" runat="server" Text="Cerrar" CssClass="btn btn-primary w-100" />
             </div>
             <div class="col-md-3">
-                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-primary w-100" />
+                <asp:Button ID="btnVolver" OnClick="btnVolver_Click" runat="server" Text="Volver" CssClass="btn btn-primary w-100" />
             </div>
         </div>
     </div>

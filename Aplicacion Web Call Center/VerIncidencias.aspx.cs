@@ -91,11 +91,11 @@ namespace Aplicacion_Web_Call_Center
 
             if (Seguridad.Rol(Session["usuario"]) == Rol.Telefonista)
             {
-                Response.Redirect("AdmIncidencias.aspx", false);
+                Response.Redirect("AdmIncidencias.aspx?inciId=" + idIncidencia);
                 return;
             }
 
-            Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia, false);
+            Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia);
         }
 
         protected void dgvIncidencias_PageIndexChanging(object sender, GridViewPageEventArgs e)

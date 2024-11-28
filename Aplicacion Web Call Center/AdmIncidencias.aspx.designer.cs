@@ -15,6 +15,15 @@ namespace Aplicacion_Web_Call_Center
     {
 
         /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
         /// Control txtId.
         /// </summary>
         /// <remarks>
@@ -96,13 +105,13 @@ namespace Aplicacion_Web_Call_Center
         protected global::System.Web.UI.WebControls.TextBox txtProblematica;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control txtComentarioCierre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtComentarioCierre;
 
         /// <summary>
         /// Control btnActualizar.
