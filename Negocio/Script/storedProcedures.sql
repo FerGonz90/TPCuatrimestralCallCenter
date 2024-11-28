@@ -101,3 +101,11 @@ SET EstadoID = @Estado,
 Problematica = @Problematica
 where IncidenciaID = @Id
 
+create procedure storedCerrarInci
+@Id int,
+@ComCierre nvarchar(500)
+as
+update Incidencias
+SET EstadoID = 5,
+ComentarioCierre = @ComCierre
+where IncidenciaID = @Id

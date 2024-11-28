@@ -12,16 +12,5 @@ namespace Aplicacion_Web_Call_Center
         protected void Application_Start(object sender, EventArgs e)
         {
         }
-
-        void Application_Error(object sender, EventArgs e)
-        {
-            Exception exc = Server.GetLastError();
-
-            Session.Add("error", exc.Message);
-            //HttpContext.Current.Items["error"] = exc.Message;
-
-            //Response.Redirect("Error.aspx");
-            Server.Transfer("Error.aspx");
-        }
     }
 }

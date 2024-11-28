@@ -101,5 +101,11 @@ namespace Aplicacion_Web_Call_Center
             
             dgvClientes.DataBind();
         }
+
+        protected void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            dgvClientes.DataSource = Session["listaCliente"];
+            dgvClientes.DataBind();
+        }
     }
 }

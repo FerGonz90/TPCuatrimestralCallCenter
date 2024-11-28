@@ -23,19 +23,23 @@
                         <asp:TextBox ID="txtFiltroU" AutoPostBack="true" CssClass="form-control" OnTextChanged="txtFiltroU_TextChanged" runat="server" />
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-6">
                     <div>
-                        <asp:Label Text=" " ID="Label1" runat="server" />
-                        <asp:Button Text="Limpiar Filtros" ID="btnLimpiarFiltros" CssClass="btn btn-primary"
-                            OnClick="btnLimpiarFiltros_Click" runat="server" />
+                        <asp:Label Text=" " ID="lblError" CssClass="text-danger" runat="server" />
+
                     </div>
                 </div>
-                <div class="col-2">
+
+                <div class="col-6">
                     <div>
-                        <asp:Label Text=" " ID="Label2" runat="server" />
+                        <asp:Label Text="" ID="Label2" CssClass="text-danger" runat="server" />
                         <asp:CheckBox Text="Más filtros" CssClass="form-check" ID="cbxFiltroAvanzado"
                             AutoPostBack="true" OnCheckedChanged="cbxFiltroAvanzado_CheckedChanged" runat="server" />
                     </div>
+                </div>
+                <div class="text-end">
+                    <asp:Button Text="Limpiar Filtros" ID="btnLimpiarFiltros" CssClass="btn btn-primary"
+                        OnClick="btnLimpiarFiltros_Click" runat="server" />
                 </div>
             </div>
 
@@ -103,7 +107,7 @@
                     <asp:BoundField DataField="Prioridad.Descripcion" HeaderText="Prioridad" />
                     <asp:BoundField DataField="Estado.Descripcion" HeaderText="Estado" />
                     <asp:BoundField DataField="UsuarioAsignado.NombreUsuario" HeaderText="Usuario Asignado" />
-                    <asp:BoundField DataField="UsuarioAsignado.Id" HeaderText="Id de Usuario"  />     
+                    <asp:BoundField DataField="UsuarioAsignado.Id" HeaderText="Id de Usuario" />
 
                     <asp:TemplateField HeaderText="Rol">
                         <ItemTemplate>

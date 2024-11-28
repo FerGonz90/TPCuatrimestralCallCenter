@@ -128,7 +128,22 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnCerrar_Click(object sender, EventArgs e)
         {
+            if(!validarCampoComFin())
+            {
+                lblError.Visible = true;
+                lblError.Text = "Debe dejar un comentario de cierre para cerrar el incidente";
+            }
+            else
+            {
+                lblError.Visible = false;
 
+                IncidenciaNegocio negocio = new IncidenciaNegocio();
+                int id = int.Parse(txtId.Text);
+                string comCierre = txtComentarioCierre.Text;
+                negocio.cerrarIncidencia(id, comCierre);
+
+                Response.Redirect("VerIncidencias.aspx", false);
+            }
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
@@ -148,12 +163,9 @@ namespace Aplicacion_Web_Call_Center
 
         private bool validarCampoComFin()
         {
-            if(!string.IsNullOrWhiteSpace(txtComentarioCierre.Text) || !string.IsNullOrEmpty(txtComentarioCierre.Text))
-            {
-                lblError.Visible = true;
-                lblError.Text = "Debe dejar un comentario para cerrar el incidente";
+            if(string.IsNullOrWhiteSpace(txtComentarioCierre.Text) || string.IsNullOrEmpty(txtComentarioCierre.Text))
                 return false;
-            }
+
             return true;
         }
     }

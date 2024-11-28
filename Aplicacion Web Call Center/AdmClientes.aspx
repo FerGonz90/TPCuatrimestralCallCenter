@@ -21,6 +21,8 @@
                     <div class="mb-2">
                         <asp:CheckBox Text="Filtrar por ID" CssClass="" ID="ckbFiltrarId" OnCheckedChanged="ckbFiltrarId_CheckedChanged"
                             AutoPostBack="true" runat="server" />
+                        <asp:Button Text="Limpiar Filtro" ID="btnLimpiarFiltro" CssClass="btn btn-primary"
+                            OnClick="btnLimpiarFiltro_Click" runat="server" />
                     </div>
                 </div>
             </div>

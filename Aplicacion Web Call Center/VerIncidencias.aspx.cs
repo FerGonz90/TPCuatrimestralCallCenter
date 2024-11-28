@@ -91,15 +91,26 @@ namespace Aplicacion_Web_Call_Center
 
             if (Seguridad.Rol(Session["usuario"]) == Rol.Telefonista)
             {
-                Response.Redirect("AdmIncidencias.aspx?inciId=" + idIncidencia);
-                return;
+                if ( dgvIncidencias.SelectedRow.Cells[4].Text == "Resuelto" ||
+                    dgvIncidencias.SelectedRow.Cells[4].Text == "Cerrado" )
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "No se puede trabajar con Incidencias Resueltas o Cerradas";
+                }
+                else
+                {
+                    Response.Redirect("AdmIncidencias.aspx?inciId=" + idIncidencia);
+                }
+                
             }
-
-            Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia);
+            else
+                Response.Redirect("VerUsuarios.aspx?inciId=" + idIncidencia);
         }
 
         protected void dgvIncidencias_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            lblError.Visible = false;
+
             dgvIncidencias.PageIndex = e.NewPageIndex;
 
             if (Session["listaInciFilt"] != null)
@@ -111,11 +122,11 @@ namespace Aplicacion_Web_Call_Center
             else
                 cargarIncidencias();
 
-
         }
 
         protected void cbxFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
         {
+            lblError.Visible = false;
             FiltroAvanzado = cbxFiltroAvanzado.Checked;
             txtFiltroU.Text = "";
             tbxFiltro.Text = "";
@@ -127,6 +138,7 @@ namespace Aplicacion_Web_Call_Center
 
         protected void tbxFiltro_TextChanged(object sender, EventArgs e)
         {
+            lblError.Visible = false;
             List<Incidencia> lista = new List<Incidencia>();
             if (Session["listaInciFilt"] != null)
                 lista = (List<Incidencia>)Session["listaInciFilt"];
@@ -141,6 +153,7 @@ namespace Aplicacion_Web_Call_Center
 
         protected void txtFiltroU_TextChanged(object sender, EventArgs e)
         {
+            lblError.Visible = false;
             List<Incidencia> lista = new List<Incidencia>();
             if (Session["listaInciFilt"] != null)
                 lista = (List<Incidencia>)Session["listaInciFilt"];
@@ -155,6 +168,7 @@ namespace Aplicacion_Web_Call_Center
 
         protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
         {
+            lblError.Visible = false;
             LimpiarFiltros();
         }
 
